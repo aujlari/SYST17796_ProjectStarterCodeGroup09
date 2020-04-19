@@ -10,6 +10,10 @@ package ca.sheridancollege.project;
  * which should be unique.
  *
  * @author dancye
+ * @ modifier rizul
+ *
+ * I have created a different branch Rizul_Aujla because the branch I created
+ * first was deleted as I had downloaded netbeans again 
  */
 public class Player implements Validator1 {
 
