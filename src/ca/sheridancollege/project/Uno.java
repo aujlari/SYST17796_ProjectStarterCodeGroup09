@@ -18,7 +18,7 @@ public class Uno {
     public static void main(String[] args) {
         PasswordValidator p = new PasswordValidator();
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
         UsernameValidator usernameVal = new UsernameValidator();
         boolean val = false;
@@ -28,7 +28,7 @@ public class Uno {
             System.out.println("Password should contain atleast one special character");
 
             System.out.println("Please Enter Username :");
-            String s = sc.nextLine();
+            String s = scan.nextLine();
 //getting input from user , putting in s
 
             boolean flag1 = usernameVal.checklength(s); //checking length of password
@@ -47,7 +47,7 @@ public class Uno {
                 System.out.println("Password should contain atleast one special character");
                 System.out.println("Password should contain at one upperacse character");
                 System.out.println("Please Enter password :");
-                String s = sc.nextLine();
+                String s = scan.nextLine();
 //getting input from user , putting in s
 
                 boolean flag1 = p.checklength(s); //checking length of password
