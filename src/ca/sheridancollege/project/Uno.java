@@ -19,11 +19,11 @@ import java.util.Scanner;
 public class Uno {
 
     public static void main(String[] args) {
-        PasswordValidator p = new PasswordValidator();
+        Password p = new Password();
 
         Scanner scan = new Scanner(System.in);
 
-        UsernameValidator usernameVal = new UsernameValidator();
+        Player usernameVal = new Player();
         boolean val = false;
 
         while (true) {
@@ -64,11 +64,11 @@ public class Uno {
             }
             System.out.println("Password accepted");
 
-            ArrayList<Unocard> playerdeck = new ArrayList<Unocard>();
-            ArrayList<Unocard> compdeck = new ArrayList<Unocard>();
+            ArrayList<GroupOfCards> playerdeck = new ArrayList<GroupOfCards>();
+            ArrayList<GroupOfCards> compdeck = new ArrayList<GroupOfCards>();
             int win; // 0 - no result; 1 - win; -1 - loss.
             Scanner input;
-            Unocard topCard; // card on top of the "pile"
+            GroupOfCards topCard; // card on top of the "pile"
             int choiceIndex; // Index of chosen card for both player and computer
             String currentColor; // Mainly used for wild cards
 
@@ -77,7 +77,7 @@ public class Uno {
                 playerdeck.clear();
                 compdeck.clear();
                 win = 0;
-                topCard = new Unocard();
+                topCard = new GroupOfCards();
                 currentColor = topCard.color;
 
                 System.out.println("\nWelcome to Uno! Initialising decks...");
@@ -99,7 +99,7 @@ public class Uno {
                         System.out.println("Your turn! Your choices:");
                         for (int i = 0; i < playerdeck.size(); i++) {
                             System.out.print(String.valueOf(i + 1) + ". "
-                                    + ((Unocard) playerdeck.get(i)).getFace() + "\n");
+                                    + ((GroupOfCards) playerdeck.get(i)).getFace() + "\n");
                         }
                         System.out.println(String.valueOf(playerdeck.size() + 1) + ". " + "Draw card" + "\n"
                                 + String.valueOf(playerdeck.size() + 2) + ". " + "Quit");
@@ -116,8 +116,8 @@ public class Uno {
                             draw(1, playerdeck);
                         } else if (choiceIndex == playerdeck.size() + 1) {
                             break gameLoop;
-                        } else if (((Unocard) playerdeck.get(choiceIndex)).canPlace(topCard, currentColor)) {
-                            topCard = (Unocard) playerdeck.get(choiceIndex);
+                        } else if (((GroupOfCards) playerdeck.get(choiceIndex)).canPlace(topCard, currentColor)) {
+                            topCard = (GroupOfCards) playerdeck.get(choiceIndex);
                             playerdeck.remove(choiceIndex);
                             currentColor = topCard.color;
                             // Producing the action of special cards
@@ -178,7 +178,7 @@ public class Uno {
                             System.out.println("I've got nothing! Drawing cards...");
                             draw(1, compdeck);
                         } else {
-                            topCard = (Unocard) compdeck.get(choiceIndex);
+                            topCard = (GroupOfCards) compdeck.get(choiceIndex);
                             compdeck.remove(choiceIndex);
                             currentColor = topCard.color;
                             System.out.println("I choose " + topCard.getFace() + " !");
@@ -197,7 +197,7 @@ public class Uno {
                                     case 14: // Wild cards
                                         do // Picking a random color that's not none
                                         {
-                                            currentColor = new Unocard().color;
+                                            currentColor = new GroupOfCards().color;
                                         } while (currentColor == "none");
 
                                         System.out.println("New color is " + currentColor);
@@ -244,9 +244,9 @@ public class Uno {
 
     }
 
-    public static void draw(int cards, ArrayList<Unocard> deck) {
+    public static void draw(int cards, ArrayList<GroupOfCards> deck) {
         for (int i = 0; i < cards; i++) {
-            deck.add(new Unocard());
+            deck.add(new GroupOfCards());
         }
     }
 
