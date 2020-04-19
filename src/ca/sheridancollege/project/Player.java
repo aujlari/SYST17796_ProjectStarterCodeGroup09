@@ -15,16 +15,16 @@ package ca.sheridancollege.project;
  * I have created a different branch Rizul_Aujla because the branch I created
  * first was deleted as I had downloaded netbeans again 
  */
-public class Player implements Validator1 {
+public class Player{
 
-    @Override
+    
     public boolean checklength(String s) {
 
         return s.length() >= 5;// return true if s is atleast 8
 
     }
 
-    @Override
+    
     public boolean checkSpecialCharacter(String s) {
 
         String specialChars = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
