@@ -13,7 +13,7 @@ public class Password implements Validator1,Validator2{
 
 
     
-// method that check the length of password
+// a method that will check the length of password
     @Override
     public   boolean checklength(String s) {
 
