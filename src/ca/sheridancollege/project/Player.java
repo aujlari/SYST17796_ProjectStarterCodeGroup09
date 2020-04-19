@@ -6,43 +6,26 @@
 package ca.sheridancollege.project;
 
 /**
- * A class that models each Player in the game. Players have an identifier, which should be unique.
+ * A class that models each Player in the game. Players have an identifier,
+ * which should be unique.
+ *
  * @author dancye
  */
-public abstract class Player 
-{
-    private String playerID; //the unique ID for this player
-    
-    /**
-     * A constructor that allows you to set the player's unique ID
-     * @param name the unique ID to assign to this player.
-     */
-    public Player(String name)
-    {
-        playerID= name;
-    }
-    
-    /**
-     * @return the playerID
-     */
-    public String getPlayerID() 
-    {
-        return playerID;
+public class Player implements Validator1 {
+
+    @Override
+    public boolean checklength(String s) {
+
+        return s.length() >= 5;// return true if s is atleast 8
+
     }
 
-    /**
-     * Ensure that the playerID is unique
-     * @param givenID the playerID to set
-     */
-    public void setPlayerID(String givenID) 
-    {
-        playerID = givenID;
+    @Override
+    public boolean checkSpecialCharacter(String s) {
+
+        String specialChars = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
+        return s.matches(specialChars);  //return true if s matches to specialChars
+
     }
-    
-    /**
-     * The method to be instantiated when you subclass the Player class
-     * with your specific type of Player and filled in with logic to play your game.
-     */
-    public abstract void play();
-    
+
 }
