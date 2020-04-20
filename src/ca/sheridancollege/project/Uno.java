@@ -168,7 +168,7 @@ public class Uno {
                                 + " cards left!" + ((compdeck.size() == 1) ? "...Uno!" : ""));
                         // Finding a card to place
                         for (choiceIndex = 0; choiceIndex < compdeck.size(); choiceIndex++) {
-                            if (((Unocard) compdeck.get(choiceIndex)).canPlace(topCard, currentColor)) // Searching for playable cards
+                            if (((GroupOfCards) compdeck.get(choiceIndex)).canPlace(topCard, currentColor)) // Searching for playable cards
                             {
                                 break;
                             }
